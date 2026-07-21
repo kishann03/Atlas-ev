@@ -1,6 +1,4 @@
-# Atlas EV 
-
-## Intelligent EV Charging Assistant
+# Atlas EV - Intelligent EV Charging Assistant
 
 In order to assist owners of electric vehicles in finding dependable charging stations, estimating wait times, comparing charging costs, and choosing the best charging choice based on real-time parameters, Atlas EV is an intelligent EV charging recommendation platform.
 
