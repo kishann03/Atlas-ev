@@ -64,16 +64,11 @@ The entire expense of charging
 
 # System Architecture
 
-User
- |
+User - 
 Frontend (React + Tailwind CSS)
- |
 Backend API (Node.js + Express)
- |
 MongoDB Atlas Database
- |
-External Services
-(Google Maps API, Charging Data APIs)
+External Services (Google Maps API, Charging Data APIs)
 
 ---
 
