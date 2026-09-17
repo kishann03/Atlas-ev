@@ -29,33 +29,35 @@ export default function Hero() {
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-bg-surface px-3 py-1.5 text-xs text-text-secondary"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-accent glow-dot" />
-              Live across 1,200+ stations, right now
+              Trusted by EV drivers across India
             </motion.div>
 
             <motion.h1
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={1}
-              className="text-4xl font-semibold leading-[1.08] text-text-primary sm:text-5xl md:text-6xl"
-            >
-              Don't just find the
-              <br />
-              nearest charger.
-              <br />
-              <span className="text-accent">Find the smartest one.</span>
-            </motion.h1>
+  variants={fadeUp}
+  initial="hidden"
+  animate="show"
+  custom={1}
+  className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-[-0.03em] text-text-primary"
+>
+  Find the
+  <span className="text-accent"> Best EV Charger</span>
+  <br />
+  Not Just the
+  <br />
+  Nearest One.
+</motion.h1>
 
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={2}
-              className="mt-6 max-w-md text-lg leading-relaxed text-text-secondary"
-            >
-              Atlas EV ranks every charger near you by reliability, queue
-              time, and real cost — so you stop guessing and start driving.
-            </motion.p>
+<motion.p
+  variants={fadeUp}
+  initial="hidden"
+  animate="show"
+  custom={2}
+  className="mt-7 max-w-xl text-xl leading-8 text-text-secondary"
+>
+  Compare nearby EV charging stations using real-time availability,
+  estimated waiting time, charging cost, and smart recommendations—
+  all in one place.
+</motion.p>
 
             <motion.div
               variants={fadeUp}
@@ -64,11 +66,11 @@ export default function Hero() {
               custom={3}
               className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
-              <Link to="/signup" className="btn-primary px-6 py-3.5 text-base">
-                Get Started
+              <Link to="/signup" className="btn-primary px-7 py-4 text-base font-semibold">
+              Find Chargers
                 <ArrowRight size={17} />
               </Link>
-              <a href="#how-it-works" className="btn-secondary px-6 py-3.5 text-base">
+              <a href="#how-it-works" className="btn-secondary px-7 py-4 text-base font-semibold">
                 See how it works
               </a>
             </motion.div>
@@ -93,35 +95,35 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="relative rounded-lg border border-border bg-bg-surface p-5 shadow-glow-lg">
+            <div className="relative rounded-lg border border-border bg-bg-surface p-6 shadow-glow-lg">
               <div className="flex items-center justify-between border-b border-border pb-4">
-                <div className="flex items-center gap-2 text-sm font-medium text-text-primary">
+                <div className="flex items-center gap-2 text-base font-semibold text-text-primary">
                   <MapPin size={15} className="text-accent" />
-                  Nearby, ranked for you
+                  Recommended Charging Stations
                 </div>
-                <span className="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-medium text-accent">
+                <span className="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
                   Live
                 </span>
               </div>
 
-              <div className="mt-4 space-y-3">
+              <div className="mt-5 space-y-3.5">
                 <StationRow
                   featured
-                  name="Highway Grid — Sector 12"
+                  name="Tata Power EZ Charge"
                   distance="1.2 km"
                   score={94}
                   queue="8 min"
                   price="₹9.5/kWh"
                 />
                 <StationRow
-                  name="Volt Point Mall Plaza"
+                  name="Statiq Charging Hub"
                   distance="2.4 km"
                   score={88}
                   queue="12 min"
                   price="₹11/kWh"
                 />
                 <StationRow
-                  name="ChargeHub Ring Road"
+                  name="Jio-bp Pulse"
                   distance="3.1 km"
                   score={61}
                   queue="21 min"
@@ -140,7 +142,7 @@ export default function Hero() {
                 <Gauge size={16} className="text-accent" />
                 <div>
                   <p className="font-mono text-lg font-semibold leading-none text-text-primary">94</p>
-                  <p className="text-[10px] text-text-tertiary">Reliability</p>
+                  <p className="text-[10px] text-text-tertiary">Smart Score</p>
                 </div>
               </div>
             </motion.div>
@@ -164,8 +166,8 @@ function StationRow({ featured, name, distance, score, queue, price }) {
       }`}
     >
       <div className="min-w-0">
-        <p className="truncate text-sm font-medium text-text-primary">{name}</p>
-        <div className="mt-1 flex items-center gap-3 text-[11px] text-text-tertiary">
+      <p className="truncate text-[15px] font-semibold text-text-primary">{name}</p>
+        <div className="mt-1 flex items-center gap-3 text-xs text-text-tertiary">
           <span className="flex items-center gap-1">
             <MapPin size={11} /> {distance}
           </span>
@@ -178,8 +180,8 @@ function StationRow({ featured, name, distance, score, queue, price }) {
         </div>
       </div>
       <div className="ml-3 shrink-0 text-right">
-        <p className={`font-mono text-sm font-semibold ${scoreColor}`}>{score}</p>
-        <p className="text-[10px] text-text-tertiary">score</p>
+        <p className="font-mono text-2xl font-bold">{score}</p>
+        <p className="text-xs text-text-tertiary">Smart Score</p>
       </div>
     </div>
   );

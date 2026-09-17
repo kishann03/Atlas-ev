@@ -32,9 +32,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ["Space Grotesk", "system-ui", "sans-serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+        sans: ["Manrope", "sans-serif"],
+        display: ["Outfit", "sans-serif"],
       },
       backgroundImage: {
         "grid-fade":

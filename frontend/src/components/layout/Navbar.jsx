@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import Logo from "@/components/common/Logo";
 
 const NAV_LINKS = [
-  { label: "Product", href: "#features" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Reviews", href: "#testimonials" },
+  { label: "Features", href: "#features" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Why Atlas EV", href: "#why-atlas-ev" },
 ];
 
 export default function Navbar() {
@@ -48,10 +48,10 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 md:flex">
           <NavLink to="/login" className="btn-ghost">
-            Log in
+            Log In
           </NavLink>
           <NavLink to="/signup" className="btn-primary">
-            Get Started
+            Find a Charger
           </NavLink>
         </div>
 
@@ -88,10 +88,10 @@ export default function Navbar() {
               ))}
               <div className="mt-2 flex flex-col gap-2 px-3">
                 <NavLink to="/login" className="btn-secondary w-full" onClick={() => setOpen(false)}>
-                  Log in
+                  Log In
                 </NavLink>
                 <NavLink to="/signup" className="btn-primary w-full" onClick={() => setOpen(false)}>
-                  Get Started
+                  Find a Charger
                 </NavLink>
               </div>
             </div>

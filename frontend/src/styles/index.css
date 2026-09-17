@@ -10,11 +10,13 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-bg-primary text-text-primary font-sans;
+    @apply bg-bg-primary text-text-primary;
+    font-family: "Manrope", sans-serif;
     font-feature-settings: "ss01" on;
   }
-  h1, h2, h3, h4 {
-    @apply font-display tracking-tight;
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+    font-family: "Outfit", sans-serif;
   }
   ::selection {
     background-color: rgba(57, 230, 160, 0.28);
@@ -43,12 +45,14 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent;
+    @apply text-sm font-semibold tracking-[0.08em] text-accent;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3
-           text-sm font-semibold transition-all duration-200 ease-out
+    @apply inline-flex items-center justify-center gap-2 rounded-sm
+           px-6 py-3.5
+           text-base font-semibold
+           transition-all duration-200 ease-out
            disabled:opacity-50 disabled:pointer-events-none;
   }
   .btn-primary {
@@ -69,7 +73,7 @@
 
   .input-field {
     @apply w-full rounded-sm border border-border bg-bg-surface2 px-4 py-3
-           text-sm text-text-primary placeholder:text-text-tertiary
+    text-base text-text-primary placeholder:text-text-tertiary
            outline-none transition-colors duration-150
            focus:border-accent/60 focus:ring-2 focus:ring-accent/20;
   }
