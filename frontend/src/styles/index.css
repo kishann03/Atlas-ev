@@ -2,33 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Theme tokens (R G B triplets). Light is the default; dark applies when
+ * <html data-theme="dark"> (toggled by src/hooks/useTheme.js).
+ *
+ * Palette: warm paper whites, deep highway-sign green as the single brand
+ * colour, and saffron as a sparing secondary — drawn from Indian road
+ * signage instead of the usual neon-on-black "AI product" look.
+ */
+:root {
+  --color-bg-primary: 252 251 248;
+  --color-bg-surface: 255 255 255;
+  --color-bg-surface2: 245 243 238;
+  --color-bg-raised: 236 233 226;
+  --color-border: 225 221 211;
+  --color-border-soft: 238 235 228;
+  --color-text-primary: 22 27 26;
+  --color-text-secondary: 72 80 78;
+  --color-text-tertiary: 120 128 125;
+  --color-accent: 11 107 74;
+  --color-accent-dim: 8 82 57;
+  --color-accent-contrast: 255 255 255;
+  --color-saffron: 214 130 24;
+  --color-info: 30 80 170;
+  --color-warning: 176 98 8;
+  --color-danger: 190 42 42;
+  --color-road: 52 58 60;
+  --color-ground: 226 222 212;
+}
+
+[data-theme="dark"] {
+  --color-bg-primary: 14 18 17;
+  --color-bg-surface: 22 27 26;
+  --color-bg-surface2: 30 36 34;
+  --color-bg-raised: 40 47 44;
+  --color-border: 50 58 55;
+  --color-border-soft: 34 41 38;
+  --color-text-primary: 239 241 237;
+  --color-text-secondary: 168 176 170;
+  --color-text-tertiary: 118 127 121;
+  --color-accent: 82 196 142;
+  --color-accent-dim: 58 160 112;
+  --color-accent-contrast: 8 20 14;
+  --color-saffron: 232 160 62;
+  --color-info: 98 150 240;
+  --color-warning: 240 170 50;
+  --color-danger: 244 100 100;
+  --color-road: 24 28 29;
+  --color-ground: 34 40 38;
+}
+
 @layer base {
-  * {
-    @apply border-border;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
   body {
-    @apply bg-bg-primary text-text-primary;
-    font-family: "Manrope", sans-serif;
-    font-feature-settings: "ss01" on;
+    @apply bg-bg-primary text-text-primary transition-colors duration-200;
+    font-family: "Figtree", system-ui, sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque", "Figtree", sans-serif;
     @apply tracking-tight;
-    font-family: "Outfit", sans-serif;
   }
-  ::selection {
-    background-color: rgba(57, 230, 160, 0.28);
-  }
-
-  /* Visible keyboard focus everywhere — accessibility floor */
+  ::selection { background-color: rgb(var(--color-accent) / 0.22); }
   :focus-visible {
-    outline: 2px solid #39e6a0;
+    outline: 2px solid rgb(var(--color-accent));
     outline-offset: 3px;
     border-radius: 6px;
   }
-
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -40,49 +80,33 @@
 }
 
 @layer components {
-  .container-page {
-    @apply mx-auto w-full max-w-content px-6 md:px-10;
-  }
-
-  .eyebrow {
-    @apply text-sm font-semibold tracking-[0.08em] text-accent;
-  }
+  .container-page { @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12 2xl:px-16; }
+  .eyebrow { @apply text-sm font-semibold uppercase tracking-[0.14em] text-accent; }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm
-           px-6 py-3.5
-           text-base font-semibold
-           transition-all duration-200 ease-out
-           disabled:opacity-50 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5
+           text-base font-semibold transition-all duration-200 ease-out
+           disabled:pointer-events-none disabled:opacity-50;
   }
-  .btn-primary {
-    @apply btn bg-accent text-bg-primary shadow-glow hover:bg-[#4FF0AE]
-           hover:shadow-glow-lg active:scale-[0.98];
-  }
+  .btn-primary { @apply btn bg-accent text-accent-contrast hover:bg-accent-dim active:scale-[0.98]; }
   .btn-secondary {
     @apply btn border border-border bg-bg-surface text-text-primary
-           hover:border-accent/40 hover:bg-bg-surface2 active:scale-[0.98];
+           hover:border-accent/50 hover:bg-bg-surface2 active:scale-[0.98];
   }
-  .btn-ghost {
-    @apply btn text-text-secondary hover:text-text-primary hover:bg-white/5;
-  }
+  .btn-ghost { @apply btn text-text-primary hover:bg-bg-surface2; }
 
-  .card {
-    @apply rounded-md bg-bg-surface shadow-card;
-  }
+  .card { @apply rounded-md bg-bg-surface shadow-card; }
 
   .input-field {
-    @apply w-full rounded-sm border border-border bg-bg-surface2 px-4 py-3
-    text-base text-text-primary placeholder:text-text-tertiary
-           outline-none transition-colors duration-150
-           focus:border-accent/60 focus:ring-2 focus:ring-accent/20;
+    @apply w-full rounded-sm border border-border bg-bg-surface px-4 py-3.5
+           text-base text-text-primary placeholder:text-text-tertiary outline-none
+           transition-colors duration-150
+           focus:border-accent focus:ring-2 focus:ring-accent/20;
   }
-
-  .link-accent {
-    @apply text-accent hover:text-[#4FF0AE] transition-colors duration-150;
-  }
-
-  .glow-dot {
-    box-shadow: 0 0 0 3px rgba(57, 230, 160, 0.15), 0 0 12px rgba(57, 230, 160, 0.6);
-  }
+  .label { @apply mb-2 block text-sm font-semibold text-text-primary; }
+  .link-accent { @apply font-medium text-accent underline-offset-4 hover:underline; }
+  .section { @apply relative py-16 md:py-24; }
 }
+
+/* Animated lane markings used by the road illustrations */
+.road-dash { stroke-dasharray: 40 40; animation: roadDash 2.2s linear infinite; }

@@ -1,0 +1,16 @@
+# Optional Render blueprint. Secrets are set in the Render dashboard, never here.
+services:
+  - type: web
+    name: atlas-ev-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_URL
+        sync: false

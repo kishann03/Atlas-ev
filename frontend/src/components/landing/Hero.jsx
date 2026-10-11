@@ -1,188 +1,65 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Gauge, Clock, PlugZap } from "lucide-react";
-import GlowBackground from "@/components/common/GlowBackground";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
-  show: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
-  }),
-};
+import { ArrowRight, Clock, Gauge, MapPin, PlugZap } from "lucide-react";
+import { RoadScene } from "@/components/common/Illustrations";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-20 pb-24 md:pt-28 md:pb-32">
-      <GlowBackground />
+    <section className="relative overflow-hidden pb-20 pt-10 md:pb-24 md:pt-14">
 
       <div className="container-page">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          {/* Copy */}
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] xl:gap-14">
           <div>
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={0}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-bg-surface px-3 py-1.5 text-xs text-text-secondary"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-accent glow-dot" />
-              Trusted by EV drivers across India
-            </motion.div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-border bg-bg-surface px-4 py-2 text-base font-medium text-text-secondary">
+              <span className="h-2.5 w-2.5 rounded-full bg-accent" />
+              Built for EV drivers across India
+            </p>
 
-            <motion.h1
-  variants={fadeUp}
-  initial="hidden"
-  animate="show"
-  custom={1}
-  className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-[-0.03em] text-text-primary"
->
-  Find the
-  <span className="text-accent"> Best EV Charger</span>
-  <br />
-  Not Just the
-  <br />
-  Nearest One.
-</motion.h1>
+            <h1 className="mt-6 text-balance font-display text-5xl font-extrabold leading-[1.04] tracking-tight text-text-primary md:text-6xl">
+              Find the <span className="text-accent">Best EV Charger</span>
+              <br />
+              Not Just the Nearest One.
+            </h1>
 
-<motion.p
-  variants={fadeUp}
-  initial="hidden"
-  animate="show"
-  custom={2}
-  className="mt-7 max-w-xl text-xl leading-8 text-text-secondary"
->
-  Compare nearby EV charging stations using real-time availability,
-  estimated waiting time, charging cost, and smart recommendations—
-  all in one place.
-</motion.p>
+            <p className="mt-6 max-w-2xl text-xl leading-9 text-text-secondary">
+              Compare nearby EV charging stations using real-time availability, estimated waiting time, charging cost,
+              and smart recommendations, all in one place.
+            </p>
 
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={3}
-              className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
-            >
-              <Link to="/signup" className="btn-primary px-7 py-4 text-base font-semibold">
-              Find Chargers
-                <ArrowRight size={17} />
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link to="/stations" className="btn-primary px-8 py-4 text-lg">
+                Find Chargers <ArrowRight size={20} />
               </Link>
-              <a href="#how-it-works" className="btn-secondary px-7 py-4 text-base font-semibold">
+              <Link to="/#how-it-works" className="btn-secondary px-8 py-4 text-lg">
                 See how it works
-              </a>
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={4}
-              className="mt-10 flex items-center gap-6 text-xs text-text-tertiary"
-            >
-              <span>No credit card required</span>
-              <span className="h-1 w-1 rounded-full bg-text-tertiary" />
-              <span>Free for individual drivers</span>
-            </motion.div>
+              </Link>
+            </div>
+            <p className="mt-5 text-base text-text-tertiary">Free for individual drivers. No credit card required.</p>
           </div>
 
-          {/* Signature visual: live station panel */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
-          >
-            <div className="relative rounded-lg border border-border bg-bg-surface p-6 shadow-glow-lg">
-              <div className="flex items-center justify-between border-b border-border pb-4">
-                <div className="flex items-center gap-2 text-base font-semibold text-text-primary">
-                  <MapPin size={15} className="text-accent" />
-                  Recommended Charging Stations
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="relative">
+            <RoadScene className="w-full shadow-card" />
+            <div className="mt-4 rounded-md border border-border bg-bg-surface p-4 shadow-pop sm:w-[26rem] lg:absolute lg:-bottom-14 lg:left-8 lg:mt-0">
+              <p className="flex items-center gap-2 text-base font-bold text-text-primary">
+                <MapPin size={18} className="text-accent" /> Best pick near you
+              </p>
+              <div className="mt-3 flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="truncate text-lg font-semibold text-text-primary">Airport Road Fast Charge</p>
+                  <p className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-text-secondary">
+                    <span className="flex items-center gap-1"><Clock size={15} /> 6 min wait</span>
+                    <span className="flex items-center gap-1"><PlugZap size={15} /> ₹22/kWh</span>
+                  </p>
                 </div>
-                <span className="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
-                  Live
-                </span>
-              </div>
-
-              <div className="mt-5 space-y-3.5">
-                <StationRow
-                  featured
-                  name="Tata Power EZ Charge"
-                  distance="1.2 km"
-                  score={94}
-                  queue="8 min"
-                  price="₹9.5/kWh"
-                />
-                <StationRow
-                  name="Statiq Charging Hub"
-                  distance="2.4 km"
-                  score={88}
-                  queue="12 min"
-                  price="₹11/kWh"
-                />
-                <StationRow
-                  name="Jio-bp Pulse"
-                  distance="3.1 km"
-                  score={61}
-                  queue="21 min"
-                  price="₹10.8/kWh"
-                />
+                <div className="text-right">
+                  <p className="flex items-center gap-1 font-display text-3xl font-extrabold text-accent"><Gauge size={22} />94</p>
+                  <p className="text-sm text-text-tertiary">Reliability</p>
+                </div>
               </div>
             </div>
-
-            {/* floating reliability badge, ambient motion */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-6 -top-6 hidden rounded-md border border-border bg-bg-surface2 px-4 py-3 shadow-card sm:block"
-            >
-              <div className="flex items-center gap-2">
-                <Gauge size={16} className="text-accent" />
-                <div>
-                  <p className="font-mono text-lg font-semibold leading-none text-text-primary">94</p>
-                  <p className="text-[10px] text-text-tertiary">Smart Score</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
-  );
-}
-
-function StationRow({ featured, name, distance, score, queue, price }) {
-  const scoreColor =
-    score >= 90 ? "text-accent" : score >= 70 ? "text-accent/80" : "text-warning";
-
-  return (
-    <div
-      className={`flex items-center justify-between rounded-md border px-3.5 py-3 transition-colors ${
-        featured
-          ? "border-accent/30 bg-accent/[0.06]"
-          : "border-border bg-bg-surface2/60"
-      }`}
-    >
-      <div className="min-w-0">
-      <p className="truncate text-[15px] font-semibold text-text-primary">{name}</p>
-        <div className="mt-1 flex items-center gap-3 text-xs text-text-tertiary">
-          <span className="flex items-center gap-1">
-            <MapPin size={11} /> {distance}
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock size={11} /> {queue}
-          </span>
-          <span className="flex items-center gap-1">
-            <PlugZap size={11} /> {price}
-          </span>
-        </div>
-      </div>
-      <div className="ml-3 shrink-0 text-right">
-        <p className="font-mono text-2xl font-bold">{score}</p>
-        <p className="text-xs text-text-tertiary">Smart Score</p>
-      </div>
-    </div>
   );
 }

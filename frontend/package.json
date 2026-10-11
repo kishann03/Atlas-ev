@@ -1,20 +1,22 @@
 {
-  "name": "atlas-ev",
+  "name": "atlas-ev-frontend",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Atlas EV — Intelligent EV Charging Assistant. Frontend v1 (Landing, Login, Signup).",
+  "description": "Atlas EV — Intelligent EV Charging Assistant (React + Vite frontend).",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.3",
+    "axios": "^1.7.9",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.468.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^6.28.0",
-    "framer-motion": "^11.11.17",
-    "lucide-react": "^0.468.0"
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",

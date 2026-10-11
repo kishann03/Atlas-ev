@@ -1,79 +1,69 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // Charged Night — Atlas EV design system (see design spec §4.1)
+        // Every color reads from a CSS variable (src/styles/index.css) so the
+        // light/dark themes swap with one attribute on <html>. The
+        // rgb(var(--x) / <alpha-value>) form keeps opacity utilities
+        // like bg-accent/10 working in both themes.
         bg: {
-          primary: "#0A0D10",
-          surface: "#12171C",
-          surface2: "#1A2129",
-          raised: "#1E262E",
+          primary: "rgb(var(--color-bg-primary) / <alpha-value>)",
+          surface: "rgb(var(--color-bg-surface) / <alpha-value>)",
+          surface2: "rgb(var(--color-bg-surface2) / <alpha-value>)",
+          raised: "rgb(var(--color-bg-raised) / <alpha-value>)",
         },
         border: {
-          DEFAULT: "#232C33",
-          soft: "#1B2228",
+          DEFAULT: "rgb(var(--color-border) / <alpha-value>)",
+          soft: "rgb(var(--color-border-soft) / <alpha-value>)",
+        },
+        text: {
+          primary: "rgb(var(--color-text-primary) / <alpha-value>)",
+          secondary: "rgb(var(--color-text-secondary) / <alpha-value>)",
+          tertiary: "rgb(var(--color-text-tertiary) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "#39E6A0",
-          dim: "#1E8F63",
-          soft: "rgba(57, 230, 160, 0.12)",
-          glow: "rgba(57, 230, 160, 0.35)",
+          DEFAULT: "rgb(var(--color-accent) / <alpha-value>)",
+          dim: "rgb(var(--color-accent-dim) / <alpha-value>)",
+          contrast: "rgb(var(--color-accent-contrast) / <alpha-value>)",
         },
-        info: "#4C8DFF",
-        warning: "#FFB020",
-        danger: "#FF5C5C",
-        text: {
-          primary: "#F5F7FA",
-          secondary: "#9AA5B1",
-          tertiary: "#5C6672",
-        },
+        saffron: "rgb(var(--color-saffron) / <alpha-value>)",
+        info: "rgb(var(--color-info) / <alpha-value>)",
+        warning: "rgb(var(--color-warning) / <alpha-value>)",
+        danger: "rgb(var(--color-danger) / <alpha-value>)",
       },
       fontFamily: {
-        sans: ["Manrope", "sans-serif"],
-        display: ["Outfit", "sans-serif"],
+        sans: ["Figtree", "system-ui", "sans-serif"],
+        display: ["Bricolage Grotesque", "Figtree", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
-      backgroundImage: {
-        "grid-fade":
-          "linear-gradient(to bottom, rgba(57,230,160,0.06), transparent 60%)",
-        "radial-glow":
-          "radial-gradient(circle at 50% 0%, rgba(57,230,160,0.18), transparent 60%)",
-        "hero-mesh":
-          "radial-gradient(circle at 15% 20%, rgba(57,230,160,0.10), transparent 40%), radial-gradient(circle at 85% 10%, rgba(76,141,255,0.08), transparent 45%)",
+      // Larger type scale: every text-* utility in the app picks this up.
+      fontSize: {
+        xs: ["0.875rem", { lineHeight: "1.25rem" }],     // 14
+        sm: ["1rem", { lineHeight: "1.5rem" }],           // 16
+        base: ["1.125rem", { lineHeight: "1.75rem" }],    // 18
+        lg: ["1.25rem", { lineHeight: "1.85rem" }],       // 20
+        xl: ["1.4375rem", { lineHeight: "2rem" }],        // 23
+        "2xl": ["1.75rem", { lineHeight: "2.2rem" }],     // 28
+        "3xl": ["2.25rem", { lineHeight: "2.6rem" }],     // 36
+        "4xl": ["2.875rem", { lineHeight: "3.2rem" }],    // 46
+        "5xl": ["3.5rem", { lineHeight: "3.8rem" }],      // 56
+        "6xl": ["4.25rem", { lineHeight: "4.4rem" }],     // 68
+        "7xl": ["5rem", { lineHeight: "5rem" }],          // 80
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(57,230,160,0.25), 0 8px 30px rgba(57,230,160,0.15)",
-        "glow-lg": "0 0 0 1px rgba(57,230,160,0.2), 0 20px 60px rgba(57,230,160,0.18)",
-        card: "0 0 0 1px #232C33, 0 8px 24px rgba(0,0,0,0.35)",
-        "card-hover": "0 0 0 1px rgba(57,230,160,0.35), 0 12px 32px rgba(0,0,0,0.45)",
+        card: "0 0 0 1px rgb(var(--color-border)), 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.05)",
+        "card-hover": "0 0 0 1px rgb(var(--color-accent) / 0.4), 0 12px 30px rgb(0 0 0 / 0.09)",
+        pop: "0 0 0 1px rgb(var(--color-border)), 0 18px 48px rgb(0 0 0 / 0.14)",
       },
-      borderRadius: {
-        sm: "8px",
-        md: "12px",
-        lg: "20px",
-        xl: "28px",
-      },
-      animation: {
-        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "spin-slow": "spin 12s linear infinite",
-        float: "float 6s ease-in-out infinite",
-        "flow-line": "flowLine 2.4s linear infinite",
-      },
+      borderRadius: { sm: "10px", md: "14px", lg: "22px", xl: "30px" },
       keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        flowLine: {
-          "0%": { strokeDashoffset: "40" },
-          "100%": { strokeDashoffset: "0" },
-        },
+        roadDash: { from: { strokeDashoffset: "0" }, to: { strokeDashoffset: "-80" } },
       },
-      maxWidth: {
-        content: "1280px",
-      },
+      animation: { "road-dash": "roadDash 2.2s linear infinite" },
+      // Wider than before (was 1280px) so laptop screens use the full width.
+      maxWidth: { content: "1680px" },
     },
   },
   plugins: [],

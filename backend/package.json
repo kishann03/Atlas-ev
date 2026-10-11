@@ -6,6 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node server.js",
+    "seed": "node scripts/seedStations.js",
     "dev": "nodemon server.js"
   },
   "dependencies": {

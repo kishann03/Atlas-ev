@@ -1,5 +1,6 @@
 import MainLayout from "@/components/layout/MainLayout";
 import Hero from "@/components/landing/Hero";
+import VehicleStrip from "@/components/landing/VehicleStrip";
 import Features from "@/components/landing/Features";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Statistics from "@/components/landing/Statistics";
@@ -10,6 +11,7 @@ export default function Landing() {
   return (
     <MainLayout>
       <Hero />
+      <VehicleStrip />
       <Features />
       <HowItWorks />
       <Statistics />

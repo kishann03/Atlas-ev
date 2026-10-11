@@ -1,91 +1,36 @@
-import { motion } from "framer-motion";
-import {
-  Gauge,
-  Clock3,
-  Wallet,
-  MapPinned,
-  MessageSquareText,
-  CarFront,
-} from "lucide-react";
+import { CarFront, Clock3, Gauge, MapPinned, MessageSquareText, Wallet } from "lucide-react";
+import { WatermarkCar } from "@/components/common/Illustrations";
 
 const FEATURES = [
-  {
-    icon: Gauge,
-    title: "Reliability Score",
-    desc: "Every station gets a live score from 0–100, built from uptime, driver reports, and maintenance history — so you know before you go.",
-  },
-  {
-    icon: Clock3,
-    title: "Queue Estimation",
-    desc: "See how many cars are ahead of you and the real wait time, updated as drivers plug in and unplug in real time.",
-  },
-  {
-    icon: Wallet,
-    title: "Cost Comparison",
-    desc: "Compare price-per-kWh across every network at once, with your estimated session cost calculated for your exact vehicle.",
-  },
-  {
-    icon: MapPinned,
-    title: "Google Maps Integration",
-    desc: "Live pins, turn-by-turn directions, and traffic-aware ETAs — routing handled by the map you already trust.",
-  },
-  {
-    icon: MessageSquareText,
-    title: "Verified Reviews",
-    desc: "Reviews from drivers who actually charged there, flagged separately from casual ratings, so the signal stays clean.",
-  },
-  {
-    icon: CarFront,
-    title: "Vehicle Profiles",
-    desc: "Add your EV once. Atlas EV matches connector types, battery size, and range to every recommendation automatically.",
-  },
+  { icon: Gauge, title: "Reliability Score", desc: "Every station gets a score from 0 to 100 based on uptime, driver reports and maintenance history, so you know before you go." },
+  { icon: Clock3, title: "Queue Estimation", desc: "See how many cars are ahead of you and the expected wait, updated as drivers plug in and unplug." },
+  { icon: Wallet, title: "Cost Comparison", desc: "Compare price per kWh across networks, with the estimated session cost worked out for your vehicle." },
+  { icon: MapPinned, title: "Google Maps Integration", desc: "Live pins on the map and one-tap directions in the Google Maps app you already use." },
+  { icon: MessageSquareText, title: "Verified Reviews", desc: "Reviews from drivers who actually charged there, kept separate from casual ratings." },
+  { icon: CarFront, title: "Vehicle Profiles", desc: "Add your EV once. Connector type, battery size and range shape every recommendation." },
 ];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 22 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] },
-  }),
-};
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-24 md:py-32">
-      <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">Built for the decision, not just the map</p>
-          <h2 className="mt-4 text-3xl font-semibold text-text-primary sm:text-4xl">
-            Six signals. One confident choice.
-          </h2>
-          <p className="mt-4 text-text-secondary">
-            Atlas EV combines everything you'd normally check across five
-            different apps — into one ranked answer.
+    <section id="features" className="relative overflow-hidden py-14 md:py-20">
+      <WatermarkCar variant="sedan" className="pointer-events-none absolute -right-24 top-6 w-[34rem] text-accent opacity-[0.07]" />
+      <div className="container-page relative">
+        <div className="max-w-3xl">
+          <h2 className="font-display text-4xl font-extrabold text-text-primary md:text-5xl">Six signals. One confident choice.</h2>
+          <p className="mt-4 text-xl text-text-secondary">
+            Everything you would check across several apps before a charge, ranked into one answer.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f, i) => (
-            <motion.div
-              key={f.title}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-60px" }}
-              custom={i}
-              className="group card p-6 transition-shadow duration-300 hover:shadow-card-hover"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-sm bg-accent/10 transition-colors group-hover:bg-accent/15">
-                <f.icon size={20} className="text-accent" strokeWidth={1.8} />
-              </div>
-              <h3 className="mt-5 text-base font-semibold text-text-primary">
-                {f.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                {f.desc}
-              </p>
-            </motion.div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {FEATURES.map((f) => (
+            <article key={f.title} className="card border border-border-soft p-7">
+              <span className="flex h-14 w-14 items-center justify-center rounded-md bg-accent/10 text-accent">
+                <f.icon size={28} strokeWidth={1.9} />
+              </span>
+              <h3 className="mt-5 text-2xl font-bold text-text-primary">{f.title}</h3>
+              <p className="mt-2 text-lg leading-8 text-text-secondary">{f.desc}</p>
+            </article>
           ))}
         </div>
       </div>

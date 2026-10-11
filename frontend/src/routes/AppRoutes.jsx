@@ -1,7 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Landing from "@/pages/Landing";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
+import ChargingStations from "@/pages/ChargingStations";
+import Profile from "@/pages/Profile";
+import ResourceInfo from "@/pages/ResourceInfo";
+import ProtectedRoute from "@/components/common/ProtectedRoute";
 
 export default function AppRoutes() {
   return (
@@ -9,9 +13,10 @@ export default function AppRoutes() {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      {/* Dashboard, Find Chargers, Station Details, Recommendation, Profile,
-          and Admin routes are scoped for v2 once the backend is in place. */}
-      <Route path="*" element={<Landing />} />
+      <Route path="/stations" element={<ChargingStations />} />
+      <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+      <Route path="/resources/:slug" element={<ResourceInfo />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
